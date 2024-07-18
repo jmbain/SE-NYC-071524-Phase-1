@@ -54,4 +54,70 @@ const otherFoods = [
     }
 ]
 
-// write your code here
+//      Notes on .querySelector() and .getElementByID()
+const restaurantMenu = document.getElementById('restaurant-menu');
+console.log(restaurantMenu);
+restaurantMenu.textContent = "Hello Flatiron"
+
+const detailImage = document.querySelector('.detail-image');
+detailImage.id = 'displayed-image';
+console.log(document.querySelector('#displayed-image'));
+
+
+//      BONUS: Using setAttribute() method to create a new attribute for an element and assign a value to the new attribute
+detailImage.setAttribute('hello-world','hi');
+console.log(detailImage);
+
+//      Notes on .querySelectorAll() and .getElementsByClassName()
+const divElements = document.querySelectorAll('div');
+console.log(divElements);
+console.log(divElements[0]);
+console.log(divElements[1]);
+
+//      Iterating over HTML elements!!! Always check if it is an array first though
+divElements.forEach(divElement => {
+    console.log(divElement);
+})
+
+
+//      !!!below example is something to avoid, changing textContent can cause a loss of data!!!
+//      innerHTML usually not a good alternative, don't want to give users a way to render html code
+// for (const divElement of divElements){
+//     console.log(divElement.textContent = "Good Morning!");
+// }
+
+// for (const divElement of divElements){
+//     console.log(divElement.innerText = "<span>Good\Morning<span/>");
+// }   
+
+const h1Element = document.createElement('h1');
+h1Element.textContent = "Flatburgers are the best!";
+h1Element.className = "flatburger";
+console.log(h1Element);
+// document.body.appendChild(h1Element);
+
+restaurantMenu.appendChild(h1Element);
+
+const descriptionDisplay = document.getElementById('description-display');
+descriptionDisplay.remove();
+console.log(descriptionDisplay);
+
+const flatburgerH3Element = document.querySelector('header h3')
+flatburgerH3Element.appendChild(descriptionDisplay);
+console.log(flatburgerH3Element);
+
+const h2Element = document.createElement('h2');
+h2Element.textContent = "I love Flatburgers!";
+h2Element.className = "flatburger";
+restaurantMenu.appendChild(h2Element);
+
+const flatburgerTextElements = document.getElementsByClassName('flatburger');
+console.log(flatburgerTextElements);
+
+// for (let index = 0; index < flatburgerTextElements.length; index++){
+//     console.log(flatburgerTextElements[index]);
+// }
+
+for(const element of flatburgerTextElements) {
+    console.log(element.style = "color:red");
+}
